@@ -17,6 +17,7 @@ def total_pagar(total_kwh):
 print("--- SISTEMA DE CONTROL ELECTRICO RESIDENCIAL ---")
 
 kwh_acumulado = 0.0
+Equipos_Registrados = 0
 
 while True:
     menu = input("\n¿Vas a meter un equipo nuevo? (si/salir): ").lower().strip()
@@ -49,6 +50,7 @@ while True:
     # Procesamos con las funciones de arriba
     gasto_equipo = conversor_a_kwh(amperaje_equipo, horas_uso, voltaje_casa)
     kwh_acumulado = kwh_acumulado + gasto_equipo
+    Equipos_Registrados += 1
     print(f"Equipo guardado fino. Consume: {round(gasto_equipo, 3)} kWh")
 
 # --- Reporte final para el usuario ---
@@ -57,6 +59,7 @@ cuenta_dolares = total_pagar(kwh_acumulado)
 print("\n==============================================")
 print("             FACTURA ESTIMADA              ")
 print("==============================================")
+print(" Equipos Registrados: ", Equipos_Registrados)
 print(" Gasto total de la casa:", round(kwh_acumulado, 3), "kWh")
 print(" Pago estimado por Corpoelec:", round(cuenta_dolares, 2), "$")
 print("==============================================")
