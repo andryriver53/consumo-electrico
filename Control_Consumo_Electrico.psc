@@ -1,26 +1,29 @@
-Funci髇 resultado_kwh <- conversor_a_kwh(amp,hrs,v)
+Funci贸n resultado_kwh <- conversor_a_kwh(amp,hrs,v)
 	Definir coseno_fi, watios, resultado_kwh Como Real
 	coseno_fi <- 0.85
 	watios <- v*amp*coseno_fi
 	resultado_kwh <- (watios*hrs)/1000
-FinFunci髇
+FinFunci贸n
 
-Funci髇 pago <- total_pagar(total_kwh)
+Funci贸n pago <- total_pagar(total_kwh)
 	Definir tarifa, pago Como Real
 	tarifa <- 0.20
 	pago <- total_kwh*tarifa
-FinFunci髇
+FinFunci贸n
 
 Algoritmo Control_Consumo_Electrico
 	Definir kwh_acumulado, voltaje_casa, amperaje_equipo, horas_uso, gasto_equipo, cuenta_dolares Como Real
 	Definir kwh_redondeado Como Real
 	Definir menu Como Cadena
+	Definir Equipo_Registrado Como Entero
+
+	Equipo_Registrado <- 0
 	kwh_acumulado <- 0.0
 	menu <- 'si'
 	Escribir '--- SISTEMA DE CONTROL ELECTRICO RESIDENCIAL ---'
 	Mientras menu<>'salir' Hacer
 		Escribir ''
-		Escribir '縑as a meter un equipo nuevo? (si/salir): '
+		Escribir '驴Vas a meter un equipo nuevo? (si/salir): '
 		Leer menu
 		menu <- Minusculas(menu)
 		Si menu='si' Entonces
@@ -43,6 +46,7 @@ Algoritmo Control_Consumo_Electrico
 					SiNo
 						gasto_equipo <- conversor_a_kwh(amperaje_equipo,horas_uso,voltaje_casa)
 						kwh_acumulado <- kwh_acumulado+gasto_equipo
+						Equipo_Registrado <- Equipo_Registrado + 1
 						Escribir 'Equipo guardado fino. Consume: ', gasto_equipo, ' kWh'
 					FinSi
 				FinSi
@@ -63,8 +67,9 @@ Algoritmo Control_Consumo_Electrico
 	Escribir '=============================================='
 	Escribir '             FACTURA ESTIMADA              '
 	Escribir '=============================================='
+	Escribir ' Equipos registrados' , Equipos_Registrados
 	Escribir ' Gasto total de la casa: ', kwh_redondeado, ' kWh'
 	Escribir ' Pago estimado por Corpoelec: ', cuenta_dolares, ' $'
 	Escribir '=============================================='
-	Escribir 'horra luz para que no te pegue el bolsillo!'
+	Escribir '隆Ahorra luz para que no te pegue el bolsillo!'
 FinAlgoritmo
