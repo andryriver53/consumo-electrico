@@ -67,7 +67,7 @@ Algoritmo Control_Consumo_Electrico
 	Escribir '=============================================='
 	Escribir '             FACTURA ESTIMADA              '
 	Escribir '=============================================='
-	Escribir ' Equipos registrados' , Equipos_Registrados
+	Escribir ' Equipos registrados' , Equipo_Registrado
 	Escribir ' Gasto total de la casa: ', kwh_redondeado, ' kWh'
 	Escribir ' Pago estimado por Corpoelec: ', cuenta_dolares, ' $'
 	Escribir '=============================================='
