@@ -49,30 +49,24 @@ while True:
         
     print("\n--- Datos del Aparato ---")
     
-    # Validación de datos para evitar que el programa se rompa si ingresan texto
-    try:
-        voltaje_casa = float(input("Voltaje del equipo (110 o 220): "))
-        if voltaje_casa <= 0:
-            print("El voltaje debe ser un valor positivo, chamo.")
-            continue
-            
-        amperaje_equipo = float(input("Amperios que consume: "))
-        if amperaje_equipo <= 0:
-            print("El amperaje no puede ser cero ni negativo.")
-            continue
-            
-        horas_uso = float(input("Horas que pasa encendido al día: "))
-        if horas_uso <= 0 or horas_uso > 24:
-            print("Horas inválidas. Deben estar entre 1 y 24.")
-            continue
-            
-    except ValueError:
-        print("Error: Ingrese solo números válidos.")
+    voltaje_casa = float(input("Voltaje del equipo (110 o 220): "))
+    if voltaje_casa <= 0:
+        print("El voltaje debe ser un valor positivo, chamo.")
+        continue
+        
+    amperaje_equipo = float(input("Amperios que consume: "))
+    if amperaje_equipo <= 0:
+        print("El amperaje no puede ser cero ni negativo.")
+        continue
+        
+    horas_uso = float(input("Horas que pasa encendido al día: "))
+    if horas_uso <= 0 or horas_uso > 24:
+        print("Horas inválidas. Deben estar entre 1 y 24.")
         continue
     
     # Procesamiento de datos del equipo actual
     gasto_equipo = conversor_a_kwh(amperaje_equipo, horas_uso, voltaje_casa)
-    kwh_acumulado += gasto_equipo
+    kwh_acumulado = kwh_acumulado + gasto_equipo
     equipos_registrados += 1
     
     print(f"¡Equipo guardado con éxito! Consume: {round(gasto_equipo, 3)} kWh")
